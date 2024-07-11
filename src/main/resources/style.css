@@ -1,0 +1,13 @@
+.root {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+#welcomeText {
+    -fx-text-fill: white;
+}
+
+#headerButtonBar {
+    -fx-text-fill: white;
+    -fx-background-color: black;
+}
