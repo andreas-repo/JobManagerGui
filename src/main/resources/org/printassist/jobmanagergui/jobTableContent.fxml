@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.printassist.jobmanagergui.JobTableContent"
+            fx:controller="org.printassist.jobmanagergui.JobTableContentController"
             prefHeight="400.0" prefWidth="600.0">
 
-    <VBox fx:id="jobTableContentVBox">
-
+    <VBox fx:id="jobTableContentVBox" alignment="CENTER">
+        <padding>
+            <Insets bottom="10.0" left="5" right="5" top="10.0"/>
+        </padding>
+        <Label text="Existing Jobs" textFill="white"/>
+        <TableView fx:id="jobTableContentTableView">
+            <TableColumn fx:id="firstNameColumn" text="First Name"/>
+            <TableColumn fx:id="lastNameColumn" text="Last Name"/>
+            <TableColumn fx:id="emailAddressColumn" text="Email Address"/>
+            <TableColumn fx:id="printerTypeColumn" text="Printer Type"/>
+            <TableColumn fx:id="phoneNumberColumn" text="Phone Number"/>
+        </TableView>
     </VBox>
-
 </AnchorPane>
