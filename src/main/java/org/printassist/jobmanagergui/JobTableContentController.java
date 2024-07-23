@@ -1,8 +1,16 @@
 package org.printassist.jobmanagergui;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.printassist.jobmanagergui.services.JobServiceImpl;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 public class JobTableContentController {
@@ -20,6 +28,42 @@ public class JobTableContentController {
 	public TableColumn<Job, String> phoneNumberColumn;
 	@FXML
 	private VBox jobTableContentVBox;
+
+	private ObservableList<Job> data;
+
+	JobServiceImpl jobService = new JobServiceImpl();
+
+	public void initialize() {
+		data = FXCollections.observableArrayList();
+
+		firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+		emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
+		printerTypeColumn.setCellValueFactory(new PropertyValueFactory<>("printerType"));
+		phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+		data.addAll(fillWithMockDdata());
+		jobTableContentTableView.setItems(data);
+	}
+
+	private List<Job> fillWithMockDdata() {
+		List<Job> list = new ArrayList<>();
+		Job jobOne = new Job();
+		jobOne.setFirstName("Andreas");
+		jobOne.setLastName("Mayer");
+		jobOne.setEmailAddress("andreas.m4020@gmail.com");
+		jobOne.setPrinterType("WC 6655");
+		jobOne.setPhoneNumber("0660-1234567890");
+		list.add(jobOne);
+		Job jobTwo = new Job();
+		jobTwo.setFirstName("Ulrike");
+		jobTwo.setLastName("Mayer");
+		jobTwo.setEmailAddress("office.ukaltenhuber@gmx.at");
+		jobTwo.setPrinterType("WC 6655");
+		jobTwo.setPhoneNumber("0664-1234567890");
+		list.add(jobTwo);
+
+		return list;
+	}
 
 	public TableView<Job> getJobTableContentTableView() {
 		return jobTableContentTableView;

@@ -9,5 +9,6 @@ public class HeaderController {
 	public ButtonBar headerButtonBar;
 	@FXML
 	public Button homeButtonHeader;
+	@FXML
 	public Button jobsButtonHeader;
 }

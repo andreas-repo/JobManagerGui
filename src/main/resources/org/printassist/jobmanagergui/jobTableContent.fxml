@@ -14,12 +14,14 @@
             <Insets bottom="10.0" left="5" right="5" top="10.0"/>
         </padding>
         <Label text="Existing Jobs" textFill="white"/>
-        <TableView fx:id="jobTableContentTableView">
-            <TableColumn fx:id="firstNameColumn" text="First Name"/>
-            <TableColumn fx:id="lastNameColumn" text="Last Name"/>
-            <TableColumn fx:id="emailAddressColumn" text="Email Address"/>
-            <TableColumn fx:id="printerTypeColumn" text="Printer Type"/>
-            <TableColumn fx:id="phoneNumberColumn" text="Phone Number"/>
+        <TableView id="jobTableContentTableView" fx:id="jobTableContentTableView">
+            <columns>
+                <TableColumn id="firstNameColumn" fx:id="firstNameColumn" text="First Name"/>
+                <TableColumn id="lastNameColumn" fx:id="lastNameColumn" text="Last Name"/>
+                <TableColumn id="emailAddressColumn" fx:id="emailAddressColumn" text="Email Address"/>
+                <TableColumn id="printerTypeColumn" fx:id="printerTypeColumn" text="Printer Type"/>
+                <TableColumn id="phoneNumberColumn" fx:id="phoneNumberColumn" text="Phone Number"/>
+            </columns>
         </TableView>
     </VBox>
 </AnchorPane>
