@@ -1,7 +1,6 @@
 package org.printassist.jobmanagergui;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.printassist.jobmanagergui.services.JobServiceImpl;
@@ -11,9 +10,13 @@ import org.springframework.web.client.RestTemplate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class JobTableContentController {
@@ -29,6 +32,32 @@ public class JobTableContentController {
 	public TableColumn<Job, String> printerTypeColumn;
 	@FXML
 	public TableColumn<Job, String> phoneNumberColumn;
+	@FXML
+	public Label addJobLabel;
+	@FXML
+	public HBox addJobHBox;
+	@FXML
+	public Label firstNameLabel;
+	@FXML
+	public TextField firstNameTextField;
+	@FXML
+	public TextField lastNameTextField;
+	@FXML
+	public Label lastNameLabel;
+	@FXML
+	public Label emailAddressLabel;
+	@FXML
+	public TextField emailAddressTextField;
+	@FXML
+	public Label phoneNumberLabel;
+	@FXML
+	public TextField phoneNumberTextField;
+	@FXML
+	public Label printerTypeLabel;
+	@FXML
+	public TextField printerTypeTextField;
+	@FXML
+	public Button addJobButton;
 	@FXML
 	private VBox jobTableContentVBox;
 
@@ -66,26 +95,26 @@ public class JobTableContentController {
 		list.add(jobTwo);
 
 		return list;
-	}private List<Job> fillWithDatabaseData() {
-		List<Job> list = new ArrayList<>();
-		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
-		list.addAll(convertLinkedHashMapToJob(jobService.getAllJobs(restTemplate)));
-		return list;
 	}
 
-	private List<Job> convertLinkedHashMapToJob(List<LinkedHashMap> jobEntities) {
-		List<Job> jobs = new ArrayList<>();
-		jobEntities.forEach(jobObject -> {
-			Job job = new Job();
-			job.setFirstName(jobObject.get("firstName").toString());
-			job.setLastName(jobObject.get("lastName").toString());
-			job.setPhoneNumber(jobObject.get("phoneNumber").toString());
-			job.setPrinterType(jobObject.get("printerType").toString());
-			job.setEmailAddress(jobObject.get("emailAddress").toString());
-			jobs.add(job);
-		});
+	@FXML
+	protected void onAddJobButtonClick() {
+		Job newJob = new Job();
+		newJob.setFirstName(firstNameTextField.getText());
+		newJob.setLastName(lastNameTextField.getText());
+		newJob.setEmailAddress(emailAddressTextField.getText());
+		newJob.setPrinterType(printerTypeTextField.getText());
+		newJob.setPhoneNumber(phoneNumberTextField.getText());
+		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
+		boolean result = jobService.createJob(newJob, restTemplate);
+		initialize();
+	}
 
-		return jobs;
+	private List<Job> fillWithDatabaseData() {
+		List<Job> list = new ArrayList<>();
+		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
+		list.addAll(jobService.getAllJobs(restTemplate));
+		return list;
 	}
 
 	public TableView<Job> getJobTableContentTableView() {

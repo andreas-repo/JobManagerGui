@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<StackPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.printassist.jobmanagergui.JobTableContentController"
             prefHeight="400.0" prefWidth="600.0">
@@ -14,7 +14,8 @@
             <Insets bottom="10.0" left="5" right="5" top="10.0"/>
         </padding>
         <Label text="Existing Jobs" textFill="white"/>
-        <TableView id="jobTableContentTableView" fx:id="jobTableContentTableView">
+        <TableView id="jobTableContentTableView" fx:id="jobTableContentTableView" GridPane.hgrow="ALWAYS"
+                   GridPane.vgrow="ALWAYS">
             <columns>
                 <TableColumn id="firstNameColumn" fx:id="firstNameColumn" text="First Name"/>
                 <TableColumn id="lastNameColumn" fx:id="lastNameColumn" text="Last Name"/>
@@ -23,5 +24,20 @@
                 <TableColumn id="phoneNumberColumn" fx:id="phoneNumberColumn" text="Phone Number"/>
             </columns>
         </TableView>
+
+        <Label id="addJobLabel" fx:id="addJobLabel" text="Add new Job" textFill="white"/>
+        <HBox id="addJobHBox"   fx:id="addJobHBox">
+            <Label id="firstNameLabel" fx:id="firstNameLabel" text="First Name"/>
+            <TextField id="firstNameTextField" fx:id="firstNameTextField" promptText="Enter first name"/>
+            <Label id="lastNameLabel" fx:id="lastNameLabel" text="Last Name"/>
+            <TextField id="lastNameTextField" fx:id="lastNameTextField" promptText="Enter last name"/>
+            <Label id="emailAddressLabel" fx:id="emailAddressLabel" text="Email Address"/>
+            <TextField id="emailAddressTextField" fx:id="emailAddressTextField" promptText="Enter email address"/>
+            <Label id="phoneNumberLabel" fx:id="phoneNumberLabel" text="Phone number"/>
+            <TextField id="phoneNumberTextField" fx:id="phoneNumberTextField" promptText="Enter email address"/>
+            <Label id="printerTypeLabel" fx:id="printerTypeLabel" text="Printer type"/>
+            <TextField id="printerTypeTextField" fx:id="printerTypeTextField" promptText="Enter email address"/>
+        </HBox>
+        <Button id="addJobButton" fx:id="addJobButton" text="Add Job" onAction="#onAddJobButtonClick"/>
     </VBox>
-</AnchorPane>
+</StackPane>

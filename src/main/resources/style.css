@@ -11,3 +11,7 @@
     -fx-text-fill: white;
     -fx-background-color: black;
 }
+
+Label {
+    -fx-text-fill: white;
+}

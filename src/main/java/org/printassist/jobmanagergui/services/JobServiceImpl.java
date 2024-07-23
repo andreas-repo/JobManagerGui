@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.printassist.jobmanagergui.Job;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -15,11 +16,31 @@ public class JobServiceImpl {
 		return builder.build();
 	}
 
-	public List<LinkedHashMap> getAllJobs(RestTemplate restTemplate) {
+	public List<Job> getAllJobs(RestTemplate restTemplate) {
 		List<LinkedHashMap> result = restTemplate.getForObject("http://localhost:8080/getAllJobs", List.class);
 		if (result.isEmpty()) {
 			return new ArrayList<>();
 		}
-		return result;
+		return convertLinkedHashMapToJob(result);
+	}
+
+	public boolean createJob(Job job, RestTemplate restTemplate) {
+		restTemplate.postForObject("http://localhost:8080/createJob", job, Job.class);
+		return true;
+	}
+
+	private List<Job> convertLinkedHashMapToJob(List<LinkedHashMap> jobEntities) {
+		List<Job> jobs = new ArrayList<>();
+		jobEntities.forEach(jobObject -> {
+			Job job = new Job();
+			job.setFirstName(jobObject.get("firstName").toString());
+			job.setLastName(jobObject.get("lastName").toString());
+			job.setPhoneNumber(jobObject.get("phoneNumber").toString());
+			job.setPrinterType(jobObject.get("printerType").toString());
+			job.setEmailAddress(jobObject.get("emailAddress").toString());
+			jobs.add(job);
+		});
+
+		return jobs;
 	}
 }
