@@ -1,25 +1,25 @@
 package org.printassist.jobmanagergui.services;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.jboss.resteasy.client.jaxrs.ResteasyClient;
-import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-import org.printassist.jobmanagergui.Job;
-
-import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.core.UriBuilder;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 public class JobServiceImpl {
-	UriBuilder FULL_PATH = UriBuilder.fromPath("http://localhost:8080/getAllJobs");
 
-
-	public List<Job> getAllJobs() {
-		ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
-		ResteasyWebTarget target = client.target(FULL_PATH);
-		ServicesInterface proxy = target.proxy(ServicesInterface.class);
-		List<Job> result = proxy.getAllJobs();
-
-		return result;
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
 	}
 
+	public List<LinkedHashMap> getAllJobs(RestTemplate restTemplate) {
+		List<LinkedHashMap> result = restTemplate.getForObject("http://localhost:8080/getAllJobs", List.class);
+		if (result.isEmpty()) {
+			return new ArrayList<>();
+		}
+		return result;
+	}
 }

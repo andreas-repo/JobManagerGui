@@ -1,9 +1,12 @@
 package org.printassist.jobmanagergui;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.printassist.jobmanagergui.services.JobServiceImpl;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.web.client.RestTemplate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,11 +44,11 @@ public class JobTableContentController {
 		emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
 		printerTypeColumn.setCellValueFactory(new PropertyValueFactory<>("printerType"));
 		phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-		data.addAll(fillWithMockDdata());
+		data.addAll(fillWithDatabaseData());
 		jobTableContentTableView.setItems(data);
 	}
 
-	private List<Job> fillWithMockDdata() {
+	private List<Job> fillWithMockData() {
 		List<Job> list = new ArrayList<>();
 		Job jobOne = new Job();
 		jobOne.setFirstName("Andreas");
@@ -63,6 +66,26 @@ public class JobTableContentController {
 		list.add(jobTwo);
 
 		return list;
+	}private List<Job> fillWithDatabaseData() {
+		List<Job> list = new ArrayList<>();
+		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
+		list.addAll(convertLinkedHashMapToJob(jobService.getAllJobs(restTemplate)));
+		return list;
+	}
+
+	private List<Job> convertLinkedHashMapToJob(List<LinkedHashMap> jobEntities) {
+		List<Job> jobs = new ArrayList<>();
+		jobEntities.forEach(jobObject -> {
+			Job job = new Job();
+			job.setFirstName(jobObject.get("firstName").toString());
+			job.setLastName(jobObject.get("lastName").toString());
+			job.setPhoneNumber(jobObject.get("phoneNumber").toString());
+			job.setPrinterType(jobObject.get("printerType").toString());
+			job.setEmailAddress(jobObject.get("emailAddress").toString());
+			jobs.add(job);
+		});
+
+		return jobs;
 	}
 
 	public TableView<Job> getJobTableContentTableView() {

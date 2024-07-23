@@ -4,8 +4,10 @@ module org.printassist.jobmanagergui {
 
 	requires com.dlsc.formsfx;
 	requires validatorfx;
-	requires jakarta.ws.rs;
-	requires resteasy.client.api;
+	requires java.desktop;
+	requires spring.web;
+	requires spring.context;
+	requires spring.boot;
 
 	opens org.printassist.jobmanagergui to javafx.fxml;
 	exports org.printassist.jobmanagergui;

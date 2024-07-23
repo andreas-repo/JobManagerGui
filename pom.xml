@@ -60,9 +60,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-client</artifactId>
-            <version>6.2.9.Final</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.3.0</version>
         </dependency>
     </dependencies>
 
