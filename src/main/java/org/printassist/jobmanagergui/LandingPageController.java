@@ -3,6 +3,7 @@ package org.printassist.jobmanagergui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 public class LandingPageController {
@@ -12,4 +13,8 @@ public class LandingPageController {
 	public TabPane jobTableContentTabPane;
 	@FXML
 	public StackPane jobTabInclude;
+	@FXML
+	public Tab finishTaskTab;
+	@FXML
+	public AnchorPane taskTabInclude;
 }

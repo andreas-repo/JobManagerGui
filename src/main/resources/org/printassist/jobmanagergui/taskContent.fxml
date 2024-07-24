@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,7 +7,34 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.printassist.jobmanagergui.TaskContent"
             prefHeight="400.0" prefWidth="600.0">
-
-    <Label text="TEST"/>
+    <VBox>
+        <HBox>
+            <Label id="getTaskLabel" fx:id="getTaskLabel" text="Task:"/>
+            <TextField id="getTaskTextField" fx:id="getTaskTextField" promptText="Enter email address of task..."/>
+            <Button id="getTaskButton" fx:id="getTaskButton" text="Get Task" onAction="#onGetTaskButtonClick"/>
+        </HBox>
+        <VBox id="taskVBox" fx:id="taskVBox" visible="false">
+            <HBox>
+                <Label id="taskFirstNameLabel" fx:id="taskFirstNameLabel" text="First Name:"/>
+                <TextField id="taskFirstNameTextField" fx:id="taskFirstNameTextField"/>
+                <Label id="taskLastNameLabel" fx:id="taskLastNameLabel" text="Last Name:"/>
+                <TextField id="taskLastNameTextField" fx:id="taskLastNameTextField"/>
+            </HBox>
+            <HBox>
+                <Label id="taskEmailAddressLabel" fx:id="taskEmailAddressLabel" text="Email Address:"/>
+                <TextField id="taskEmailAddressTextField" fx:id="taskEmailAddressTextField"/>
+                <Label id="taskPhoneNumberLabel" fx:id="taskPhoneNumberLabel" text="Phone number:"/>
+                <TextField id="taskPhoneNumberTextField" fx:id="taskPhoneNumberTextField"/>
+            </HBox>
+            <HBox>
+                <Label id="taskAddressLabel" fx:id="taskAddressLabel" text="Address:"/>
+                <TextField id="taskAddressTextField" fx:id="taskAddressTextField"/>
+                <Label id="taskCityLabel" fx:id="taskCityLabel" text="City:"/>
+                <TextField id="taskCityTextField" fx:id="taskCityTextField"/>
+                <Label id="taskProvinceLabel" fx:id="taskProvinceLabel" text="Province:"/>
+                <TextField id="taskProvinceTextField" fx:id="taskProvinceTextField"/>
+            </HBox>
+        </VBox>
+    </VBox>
 
 </AnchorPane>
