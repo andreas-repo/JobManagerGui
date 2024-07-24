@@ -15,3 +15,11 @@
 Label {
     -fx-text-fill: white;
 }
+
+.tab-pane .tab {
+    -fx-background-color: black;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: grey;
+}

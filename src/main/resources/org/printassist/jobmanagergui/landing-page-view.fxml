@@ -2,13 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.printassist.jobmanagergui.LandingPageController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <fx:include source="header.fxml"/>
+    <TabPane id="jobTableContentTabPane" fx:id="jobTableContentTabPane">
+        <Tab id="jobTab" fx:id="jobTab" text="Jobs" closable="false">
+            <fx:include source="jobTableContent.fxml" fx:id="jobTabInclude"/>
+        </Tab>
+        <Tab id="finishTaskTab" fx:id="finishTaskTab" text="Task" closable="false">
+            <fx:include source="taskContent.fxml" fx:id="taskTabInclude"/>
+        </Tab>
+    </TabPane>
 
-    <fx:include source="jobTableContent.fxml"/>
+
 
 </VBox>
