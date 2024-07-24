@@ -3,6 +3,7 @@ package org.printassist.jobmanagergui.services;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.printassist.jobmanagergui.Job;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -24,9 +25,21 @@ public class JobServiceImpl {
 		return convertLinkedHashMapToJob(result);
 	}
 
-	public boolean createJob(Job job, RestTemplate restTemplate) {
+	public void createJob(Job job, RestTemplate restTemplate) {
 		restTemplate.postForObject("http://localhost:8080/createJob", job, Job.class);
-		return true;
+	}
+
+	public void deleteJobThroughEmailAddress(String emailAddress, RestTemplate restTemplate) {
+		if (emailAddress != null && !emailAddress.isEmpty()) {
+			restTemplate.delete("http://localhost:8080//deleteJobThroughEmailAddress/" + emailAddress);
+		}
+	}
+
+	public Optional<Job> findJobByEmailAddress(String emailAddress, RestTemplate restTemplate) {
+		if (emailAddress != null && !emailAddress.isEmpty()) {
+			return Optional.ofNullable(restTemplate.getForObject("http://localhost:8080/findJob/" + emailAddress, Job.class));
+		}
+		return Optional.empty();
 	}
 
 	private List<Job> convertLinkedHashMapToJob(List<LinkedHashMap> jobEntities) {

@@ -2,6 +2,7 @@ package org.printassist.jobmanagergui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.printassist.jobmanagergui.services.JobServiceImpl;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class JobTableContentController {
@@ -59,15 +61,24 @@ public class JobTableContentController {
 	@FXML
 	public Button addJobButton;
 	@FXML
+	public VBox jobTableControlsVBox;
+	@FXML
+	public HBox deleteJobHBox;
+	@FXML
+	public Label deleteJobLabel;
+	@FXML
+	public TextField deleteJobTextField;
+	@FXML
+	public Button deleteJobButton;
+	@FXML
+	public StackPane jobTableContentStackPane;
+	@FXML
 	private VBox jobTableContentVBox;
-
-	private ObservableList<Job> data;
 
 	JobServiceImpl jobService = new JobServiceImpl();
 
 	public void initialize() {
-		data = FXCollections.observableArrayList();
-
+		ObservableList<Job> data = FXCollections.observableArrayList();
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
@@ -75,46 +86,55 @@ public class JobTableContentController {
 		phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 		data.addAll(fillWithDatabaseData());
 		jobTableContentTableView.setItems(data);
+		sizeTableColumnsToFillTable();
 	}
 
-	private List<Job> fillWithMockData() {
-		List<Job> list = new ArrayList<>();
-		Job jobOne = new Job();
-		jobOne.setFirstName("Andreas");
-		jobOne.setLastName("Mayer");
-		jobOne.setEmailAddress("andreas.m4020@gmail.com");
-		jobOne.setPrinterType("WC 6655");
-		jobOne.setPhoneNumber("0660-1234567890");
-		list.add(jobOne);
-		Job jobTwo = new Job();
-		jobTwo.setFirstName("Ulrike");
-		jobTwo.setLastName("Mayer");
-		jobTwo.setEmailAddress("office.ukaltenhuber@gmx.at");
-		jobTwo.setPrinterType("WC 6655");
-		jobTwo.setPhoneNumber("0664-1234567890");
-		list.add(jobTwo);
+	private void sizeTableColumnsToFillTable() {
+		firstNameColumn.prefWidthProperty().bind(jobTableContentTableView.widthProperty().divide(5));
+		lastNameColumn.prefWidthProperty().bind(jobTableContentTableView.widthProperty().divide(5));
+		emailAddressColumn.prefWidthProperty().bind(jobTableContentTableView.widthProperty().divide(5));
+		printerTypeColumn.prefWidthProperty().bind(jobTableContentTableView.widthProperty().divide(5));
+		phoneNumberColumn.prefWidthProperty().bind(jobTableContentTableView.widthProperty().divide(5));
 
-		return list;
+	}
+
+	@FXML
+	public void onDeleteJobButtonClick() {
+		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
+		jobService.deleteJobThroughEmailAddress(deleteJobTextField.getText(), restTemplate);
+		initialize();
+		deleteJobTextField.setText(null);
 	}
 
 	@FXML
 	protected void onAddJobButtonClick() {
-		Job newJob = new Job();
-		newJob.setFirstName(firstNameTextField.getText());
-		newJob.setLastName(lastNameTextField.getText());
-		newJob.setEmailAddress(emailAddressTextField.getText());
-		newJob.setPrinterType(printerTypeTextField.getText());
-		newJob.setPhoneNumber(phoneNumberTextField.getText());
-		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
-		boolean result = jobService.createJob(newJob, restTemplate);
+		Optional<Job> result = jobService.findJobByEmailAddress(emailAddressTextField.getText(), jobService.restTemplate(new RestTemplateBuilder()));
+		if (result.isEmpty()) {
+			Job newJob = new Job();
+			newJob.setFirstName(firstNameTextField.getText());
+			newJob.setLastName(lastNameTextField.getText());
+			newJob.setEmailAddress(emailAddressTextField.getText());
+			newJob.setPrinterType(printerTypeTextField.getText());
+			newJob.setPhoneNumber(phoneNumberTextField.getText());
+			RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
+			jobService.createJob(newJob, restTemplate);
+		}
+
 		initialize();
+		cleanAddJobInputs();
+	}
+
+	private void cleanAddJobInputs() {
+		firstNameTextField.setText(null);
+		lastNameTextField.setText(null);
+		emailAddressTextField.setText(null);
+		printerTypeTextField.setText(null);
+		phoneNumberTextField.setText(null);
 	}
 
 	private List<Job> fillWithDatabaseData() {
-		List<Job> list = new ArrayList<>();
 		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
-		list.addAll(jobService.getAllJobs(restTemplate));
-		return list;
+		return new ArrayList<>(jobService.getAllJobs(restTemplate));
 	}
 
 	public TableView<Job> getJobTableContentTableView() {
