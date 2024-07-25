@@ -33,6 +33,36 @@
                 <TextField id="taskCityTextField" fx:id="taskCityTextField"/>
                 <Label id="taskProvinceLabel" fx:id="taskProvinceLabel" text="Province:"/>
                 <TextField id="taskProvinceTextField" fx:id="taskProvinceTextField"/>
+                <Label id="taskPostalCodeLabel" fx:id="taskPostalCodeLabel" text="Postal Code:"/>
+                <TextField id="taskPostalCodeTextField" fx:id="taskPostalCodeTextField"/>
+                <Label id="taskCountryLabel" fx:id="taskCountryLabel" text="Country:"/>
+                <TextField id="taskCountryTextField" fx:id="taskCountryTextField"/>
+            </HBox>
+            <HBox>
+                <Label id="taskPrinterTypeLabel" fx:id="taskPrinterTypeLabel" text="Printer type:"/>
+                <TextField id="taskPrinterTypeTextField" fx:id="taskPrinterTypeTextField"/>
+                <Label id="taskDateLabel" fx:id="taskDateLabel" text="Date:"/>
+                <TextField id="taskDateTextField" fx:id="taskDateTextField"/>
+                <Label id="taskTimeLabel" fx:id="taskTimeLabel" text="Time:"/>
+                <TextField id="taskTimeTextField" fx:id="taskTimeTextField"/>
+            </HBox>
+            <HBox>
+                <Separator prefWidth="1200"/>
+            </HBox>
+            <HBox>
+                <Label id="taskDatePickerLabel" fx:id="taskDatePickerLabel" text="Select Date for completion of Task:"/>
+                <DatePicker id="taskDatePicker" fx:id="taskDatePicker"/>
+                <Label id="taskBeginTimeLabel" fx:id="taskBeginTimeLabel" text="Start time:"/>
+                <TextField id="taskBeginTimeTextField" fx:id="taskBeginTimeTextField"/>
+                <Label id="taskEndTimeLabel" fx:id="taskEndTimeLabel" text="End time:"/>
+                <TextField id="taskEndTimeTextField" fx:id ="taskEndTimeTextField"/>
+            </HBox>
+            <HBox>
+                <Label id="taskNotesLabel" fx:id="taskNotesLabel" text="Notes:"/>
+                <TextArea id="taskNotesTextArea" prefWidth="800" prefHeight="200"/>
+            </HBox>
+            <HBox>
+                <Button id="sendMailButton" fx:id="sendMailButton" onAction="#sendMail" text="Send Mail"/>
             </HBox>
         </VBox>
     </VBox>

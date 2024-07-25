@@ -18,7 +18,8 @@ public class Job {
 	public SimpleStringProperty province = new SimpleStringProperty();
 	public SimpleStringProperty postalCode = new SimpleStringProperty();
 	public SimpleStringProperty country = new SimpleStringProperty();
-
+	public SimpleStringProperty date = new SimpleStringProperty();
+	public SimpleStringProperty time = new SimpleStringProperty();
 
 	public String getFirstName() {
 		return firstName.get();
@@ -138,5 +139,29 @@ public class Job {
 
 	public void setCountry(String country) {
 		this.country.set(country);
+	}
+
+	public String getDate() {
+		return date.get();
+	}
+
+	public SimpleStringProperty dateProperty() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date.set(date);
+	}
+
+	public String getTime() {
+		return time.get();
+	}
+
+	public SimpleStringProperty timeProperty() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time.set(time);
 	}
 }

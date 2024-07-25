@@ -8,6 +8,7 @@ module org.printassist.jobmanagergui {
 	requires spring.web;
 	requires spring.context;
 	requires spring.boot;
+	requires jakarta.mail;
 
 	opens org.printassist.jobmanagergui to javafx.fxml;
 	exports org.printassist.jobmanagergui;
