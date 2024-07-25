@@ -13,4 +13,10 @@ public enum CountryEnum {
 			default: return AT;
 		}
 	}
+
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }

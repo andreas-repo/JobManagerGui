@@ -8,7 +8,6 @@ import org.printassist.jobmanagergui.services.MailSenderServiceImpl;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -16,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-public class TaskContent {
+public class TaskContentController {
 	@FXML
 	public Label getTaskLabel;
 	@FXML
@@ -94,22 +93,27 @@ public class TaskContent {
 	public void onGetTaskButtonClick() {
 		RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
 		Optional<Job> job = jobService.findJobByEmailAddress(getTaskTextField.getText(), restTemplate);
-		if (job.isPresent()) {
-			taskFirstNameTextField.setText(job.get().getFirstName());
-			taskLastNameTextField.setText(job.get().getLastName());
-			taskEmailAddressTextField.setText(job.get().getEmailAddress());
-			taskPhoneNumberTextField.setText(job.get().getPhoneNumber());
-			taskAddressTextField.setText(job.get().getAddress());
-			taskCityTextField.setText(job.get().getCity());
-			taskProvinceTextField.setText(job.get().getProvince());
-			taskPostalCodeTextField.setText(job.get().getPostalCode());
-			taskCountryTextField.setText(CountryEnum.getCountry(job.get().getCountry()).toString());
-			taskPrinterTypeTextField.setText(job.get().getPrinterType());
-			taskDateTextField.setText(job.get().getDate());
-			taskTimeTextField.setText(job.get().getTime());
+		try {
+			if (job.isPresent()) {
+				taskFirstNameTextField.setText(job.get().getFirstName());
+				taskLastNameTextField.setText(job.get().getLastName());
+				taskEmailAddressTextField.setText(job.get().getEmailAddress());
+				taskPhoneNumberTextField.setText(job.get().getPhoneNumber());
+				taskAddressTextField.setText(job.get().getAddress());
+				taskCityTextField.setText(job.get().getCity());
+				taskProvinceTextField.setText(job.get().getProvince());
+				taskPostalCodeTextField.setText(job.get().getPostalCode());
+				taskCountryTextField.setText(CountryEnum.getCountry(job.get().getCountry()).toString());
+				taskPrinterTypeTextField.setText(job.get().getPrinterType());
+				taskDateTextField.setText(job.get().getDate());
+				taskTimeTextField.setText(job.get().getTime());
 
-			taskVBox.setVisible(true);
+				taskVBox.setVisible(true);
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	public void sendMail() {

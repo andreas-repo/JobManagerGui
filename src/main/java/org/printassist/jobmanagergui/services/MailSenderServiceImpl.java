@@ -20,7 +20,7 @@ public class MailSenderServiceImpl {
 
 	private static final Properties PROPERTIES = new Properties();
 	private static final String USERNAME = "xerox6655@gmx.at";
-	private static final String PASSWORD = ""; //TODO set password
+	private static final String PASSWORD = "gfMe45xhAh9B4Zp"; //TODO set password
 	private static final String HOST = "mail.gmx.net";
 	private static final String PORT = "587";
 
@@ -52,7 +52,7 @@ public class MailSenderServiceImpl {
 		try {
 			// create a message with headers
 			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(from));
+			msg.setFrom(new InternetAddress("xerox6655@gmx.at"));
 			InternetAddress addressTo = new InternetAddress(to);
 			msg.setRecipients(Message.RecipientType.TO, String.valueOf(addressTo));
 			msg.setSubject(subject);
