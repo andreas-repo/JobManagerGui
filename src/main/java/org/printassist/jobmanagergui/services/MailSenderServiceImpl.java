@@ -20,7 +20,7 @@ public class MailSenderServiceImpl {
 
 	private static final Properties PROPERTIES = new Properties();
 	private static final String USERNAME = "xerox6655@gmx.at";
-	private static final String PASSWORD = "gfMe45xhAh9B4Zp";
+	private static final String PASSWORD = "";
 	private static final String HOST = "mail.gmx.net";
 	private static final String PORT = "587";
 
