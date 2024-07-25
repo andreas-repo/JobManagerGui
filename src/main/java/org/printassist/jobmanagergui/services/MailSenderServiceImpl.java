@@ -25,6 +25,7 @@ public class MailSenderServiceImpl {
 	private static final String PORT = "587";
 
 	static {
+		PROPERTIES.put("mail.debug", "true");
 		PROPERTIES.put("mail.transport.protocol", "smtp");
 		PROPERTIES.put("mail.smtp.host", HOST);
 		PROPERTIES.put("mail.smtp.port", PORT);
@@ -32,8 +33,8 @@ public class MailSenderServiceImpl {
 		PROPERTIES.put("mail.smtp.starttls.enable", "true");
 		PROPERTIES.put("mail.smtp.user", USERNAME);
 		PROPERTIES.put("mail.smtp.password", PASSWORD);
-		//PROPERTIES.put("mail.smtp.socketFactory.port", "587");
-		//PROPERTIES.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		PROPERTIES.put("mail.smtp.isSSL", "false");
+		PROPERTIES.setProperty("mail.smtp.ssl.protocols", "TLSv1.1 TLSv1.2");
 	}
 
 	public static void sendPlainTextMail(String from, String to, String subject, List<String> messages, boolean debug) {
@@ -43,7 +44,7 @@ public class MailSenderServiceImpl {
 			protected PasswordAuthentication getPasswordAuthentication()
 			{
 				return new PasswordAuthentication(PROPERTIES.getProperty("mail.smtp.user"),
-					PROPERTIES.getProperty("mail.smtp.password"));
+					PASSWORD);
 			}
 		});
 		session.setDebug(debug);
@@ -52,16 +53,17 @@ public class MailSenderServiceImpl {
 			// create a message with headers
 			MimeMessage msg = new MimeMessage(session);
 			msg.setFrom(new InternetAddress(from));
-			InternetAddress[] address = {new InternetAddress(to)};
-			msg.setRecipients(Message.RecipientType.TO, address);
+			InternetAddress addressTo = new InternetAddress(to);
+			msg.setRecipients(Message.RecipientType.TO, String.valueOf(addressTo));
 			msg.setSubject(subject);
 			msg.setSentDate(new Date());
+			msg.setContent("This is the message content", "text/plain");
 
 			//create message body
 			Multipart mp = new MimeMultipart();
 			for (String message : messages) {
 				MimeBodyPart mbp = new MimeBodyPart();
-				mbp.setText(message, "us-ascii");
+				mbp.setContent(message, "text/plain");
 				mp.addBodyPart(mbp);
 			}
 			msg.setContent(mp);
