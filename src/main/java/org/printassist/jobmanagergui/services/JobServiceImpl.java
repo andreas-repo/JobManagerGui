@@ -56,4 +56,8 @@ public class JobServiceImpl {
 
 		return jobs;
 	}
+
+	public Optional<Job> findJobByPhoneNumber(String phoneNumber, RestTemplate restTemplate) {
+		return Optional.ofNullable(restTemplate.getForObject("http://localhost:8080/findJobByPhoneNumber/" + phoneNumber, Job.class));
+	}
 }

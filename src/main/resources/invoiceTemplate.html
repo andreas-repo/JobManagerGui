@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abrechnung</title>
+</head>
+<body>
+<p><img src="/images/printassist-logo.png" alt="description" width="327" height="43"/></p>
+    <h1>Abrechnung</h1>
+    <p>Rechnungsnummer: {{invoiceNumber}}</p>
+    <p>Abrechnung für {{firstName}} {{lastName}}</p>
+    <b></b>
+    <dl>
+        <dt>Email-Adresse:</dt>
+        <dd>{{emailAddress}}</dd>
+        <dt>Telefon-Nummer:</dt>
+        <dd>{{phoneNumber}}</dd>
+        <dt>Drucker-Typ</dt>
+        <dd>{{printerType}}</dd>
+    </dl>
+    <br>
+    <dl>
+        <dt>Datum:</dt>
+        <dd>{{date}}</dd>
+        <dt>Begonnen:</dt>
+        <dd>{{startTime}}</dd>
+        <dt>Abgeschlossen:</dt>
+        <dd>{{endTime}}</dd>
+    </dl>
+    <br>
+    <p>Leistungen erbracht: </p>
+    <p>{{invoiceDetails}}</p>
+    <p>Gesamtpreis: {{total}}</p>
+</body>
+</html>

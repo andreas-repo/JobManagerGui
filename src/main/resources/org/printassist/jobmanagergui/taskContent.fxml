@@ -9,9 +9,12 @@
             prefHeight="400.0" prefWidth="600.0">
     <VBox>
         <HBox>
-            <Label id="getTaskLabel" fx:id="getTaskLabel" text="Task:"/>
-            <TextField id="getTaskTextField" fx:id="getTaskTextField" promptText="Enter email address of task..."/>
-            <Button id="getTaskButton" fx:id="getTaskButton" text="Get Task" onAction="#onGetTaskButtonClick"/>
+            <Label id="taskFindByEmailAddressLabel" fx:id="taskFindByEmailAddressLabel" text="Task:"/>
+            <TextField id="taskFindByEmailAddressTextField" fx:id="taskFindByEmailAddressTextField" promptText="Enter email address of task..."/>
+            <Button id="getTaskButton" fx:id="getTaskButton" text="Get Task" onAction="#onFindByEmailAddressButtonClick"/>
+            <Label id="taskFindByPhonenumberLabel" fx:id="taskFindByPhonenumberLabel" text="Find Task by Phonenumber:"/>
+            <TextField id="taskFindByPhonenumberTextField" fx:id="taskFindByPhonenumberTextField" promptText="Enter phonenumber of task..."/>
+            <Button id="taskFindByPhonenumberButton" fx:id="taskFindByPhonenumberButton" text="Find Task by Phonenumber" onAction="#onTaskFindByPhonenumberButtonClick"/>
         </HBox>
         <VBox id="taskVBox" fx:id="taskVBox" visible="false">
             <HBox>
@@ -59,10 +62,11 @@
             </HBox>
             <HBox>
                 <Label id="taskNotesLabel" fx:id="taskNotesLabel" text="Notes:"/>
-                <TextArea id="taskNotesTextArea" prefWidth="800" prefHeight="200"/>
+                <TextArea id="taskNotesTextArea" fx:id="taskNotesTextArea" prefWidth="800" prefHeight="200" editable="true"/>
             </HBox>
             <HBox>
-                <Button id="sendMailButton" fx:id="sendMailButton" onAction="#sendMail" text="Send Mail"/>
+                <Button id="createInvoiceButton" fx:id="createInvoiceButton" onAction="#createInvoice" text="Create Invoice"/>
+                <Button id="createAndSendInvoiceButton" fx:id="createAndSendInvoiceButton" onAction="#createAndSendInvoiceButton" text="Create and send Invoice"/>
             </HBox>
         </VBox>
     </VBox>
