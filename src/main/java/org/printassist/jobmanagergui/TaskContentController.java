@@ -1,5 +1,6 @@
 package org.printassist.jobmanagergui;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
@@ -87,6 +88,10 @@ public class TaskContentController {
 	@FXML
 	public TextArea taskNotesTextArea;
 	@FXML
+	public Label taskInvoiceReceiverLabel;
+	@FXML
+	public TextField taskInvoiceReceiverTextField;
+	@FXML
 	public Button createInvoiceButton;
 	@FXML
 	public Button createAndSendInvoiceButton;
@@ -96,6 +101,11 @@ public class TaskContentController {
 	public TextField taskFindByPhonenumberTextField;
 	@FXML
 	public Button taskFindByPhonenumberButton;
+	@FXML
+	public Label taskDurationLabel;
+	@FXML
+	public TextField taskDurationTextField;
+
 
 	JobServiceImpl jobService = new JobServiceImpl();
 	InvoiceServiceImpl invoiceService = new InvoiceServiceImpl();
@@ -168,16 +178,6 @@ public class TaskContentController {
 		}
 	}
 
-	/*
-	public void sendMail() {
-		MailSenderServiceImpl.sendPlainTextMail("xerox6655@gmail.com",
-			"andreas.m4020@gmail.com",
-			"Test Email",
-			List.of("Hello", "World"),
-			true);
-	}
-	*/
-
 	public void createInvoice() {
 		String date = taskDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
@@ -189,12 +189,34 @@ public class TaskContentController {
 				date,
 				taskBeginTimeTextField.getText(),
 				taskEndTimeTextField.getText(),
-				taskNotesTextArea.getText()
+				taskNotesTextArea.getText(),
+				taskDurationTextField.getText()
 				);
 	}
 
 	public void createAndSendInvoiceButton() {
+		if (taskInvoiceReceiverTextField.getText().isEmpty()) {
+			taskInvoiceReceiverTextField.setPromptText("Receiver missing!");
+		} else {
+			String date = taskDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			Invoice invoice = invoiceService.buildInvoice(taskFirstNameTextField.getText(),
+					taskLastNameTextField.getText(),
+					taskEmailAddressTextField.getText(),
+					taskPhoneNumberTextField.getText(),
+					taskPrinterTypeTextField.getText(),
+					date,
+					taskBeginTimeTextField.getText(),
+					taskEndTimeTextField.getText(),
+					taskNotesTextArea.getText(),
+					taskDurationTextField.getText()
+			);
 
+            try {
+                invoiceService.sendInvoice(invoice, taskInvoiceReceiverTextField.getText());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 	}
 }
 

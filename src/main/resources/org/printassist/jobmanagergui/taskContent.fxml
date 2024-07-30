@@ -16,6 +16,9 @@
             <TextField id="taskFindByPhonenumberTextField" fx:id="taskFindByPhonenumberTextField" promptText="Enter phonenumber of task..."/>
             <Button id="taskFindByPhonenumberButton" fx:id="taskFindByPhonenumberButton" text="Find Task by Phonenumber" onAction="#onTaskFindByPhonenumberButtonClick"/>
         </HBox>
+        <HBox>
+            <Separator prefWidth="1200"/>
+        </HBox>
         <VBox id="taskVBox" fx:id="taskVBox" visible="false">
             <HBox>
                 <Label id="taskFirstNameLabel" fx:id="taskFirstNameLabel" text="First Name:"/>
@@ -52,19 +55,25 @@
             <HBox>
                 <Separator prefWidth="1200"/>
             </HBox>
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Label id="taskDatePickerLabel" fx:id="taskDatePickerLabel" text="Select Date for completion of Task:"/>
                 <DatePicker id="taskDatePicker" fx:id="taskDatePicker"/>
                 <Label id="taskBeginTimeLabel" fx:id="taskBeginTimeLabel" text="Start time:"/>
                 <TextField id="taskBeginTimeTextField" fx:id="taskBeginTimeTextField"/>
                 <Label id="taskEndTimeLabel" fx:id="taskEndTimeLabel" text="End time:"/>
                 <TextField id="taskEndTimeTextField" fx:id ="taskEndTimeTextField"/>
+                <Label id="taskDurationLabel" fx:id="taskDurationLabel" text="Duration:"/>
+                <TextField id="taskDurationTextField" fx:id="taskDurationTextField" promptText="Enter duration in hours..."/>
             </HBox>
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Label id="taskNotesLabel" fx:id="taskNotesLabel" text="Notes:"/>
-                <TextArea id="taskNotesTextArea" fx:id="taskNotesTextArea" prefWidth="800" prefHeight="200" editable="true"/>
+                <TextArea id="taskNotesTextArea" fx:id="taskNotesTextArea" prefWidth="800" prefHeight="500"/>
             </HBox>
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
+                <Label id="taskInvoiceReceiverLabel" fx:id="taskInvoiceReceiverLabel" text="Invoice Receiver:"/>
+                <TextField id="taskInvoiceReceiverTextField" fx:id="taskInvoiceReceiverTextField" promptText="Enter email of receiver..."/>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Button id="createInvoiceButton" fx:id="createInvoiceButton" onAction="#createInvoice" text="Create Invoice"/>
                 <Button id="createAndSendInvoiceButton" fx:id="createAndSendInvoiceButton" onAction="#createAndSendInvoiceButton" text="Create and send Invoice"/>
             </HBox>
