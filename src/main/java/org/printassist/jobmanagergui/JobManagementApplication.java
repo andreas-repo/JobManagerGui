@@ -16,7 +16,7 @@ public class JobManagementApplication extends Application {
 	public void start(Stage stage) throws IOException {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application_de", Locale.GERMAN);
 		FXMLLoader fxmlLoader = new FXMLLoader(JobManagementApplication.class.getResource("landing-page-view.fxml"), resourceBundle);
-		Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+		Scene scene = new Scene(fxmlLoader.load(), 1600, 1000);
 		scene.getStylesheets().add("style.css");
 		stage.setTitle("Welcome to the JobManagement Application!");
 		stage.setScene(scene);

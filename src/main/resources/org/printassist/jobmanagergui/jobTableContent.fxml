@@ -13,7 +13,7 @@
         <padding>
             <Insets bottom="10.0" left="5" right="5" top="10.0"/>
         </padding>
-        <Label text="Existing Jobs" textFill="white"/>
+        <Label text="Customer Jobs" id="headerJobsLabel"/>
         <TableView id="jobTableContentTableView" fx:id="jobTableContentTableView">
             <columns>
                 <TableColumn id="firstNameColumn" fx:id="firstNameColumn" text="First Name"/>
@@ -25,7 +25,7 @@
         </TableView>
 
         <VBox id="jobTableControlsVBox" fx:id="jobTableControlsVBox" alignment="CENTER">
-            <Label id="addJobLabel" fx:id="addJobLabel" text="Add new Job" textFill="white"/>
+            <Label id="addJobLabel" fx:id="addJobLabel" text="Add new Job"/>
             <HBox id="addJobHBox"   fx:id="addJobHBox">
                 <Label id="firstNameLabel" fx:id="firstNameLabel" text="First Name:"/>
                 <TextField id="firstNameTextField" fx:id="firstNameTextField" promptText="Enter first name"/>

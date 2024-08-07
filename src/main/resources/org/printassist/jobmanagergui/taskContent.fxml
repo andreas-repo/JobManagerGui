@@ -17,7 +17,7 @@
             <Button id="taskFindByPhonenumberButton" fx:id="taskFindByPhonenumberButton" text="Find Task by Phonenumber" onAction="#onTaskFindByPhonenumberButtonClick"/>
         </HBox>
         <HBox>
-            <Separator prefWidth="1200"/>
+            <Separator prefWidth="1600"/>
         </HBox>
         <VBox id="taskVBox" fx:id="taskVBox" visible="false">
             <HBox>
