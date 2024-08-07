@@ -8,6 +8,15 @@
                 background-color: rgb(55, 56, 56);
                 color: rgb(189, 155, 63);
             }
+            #invoiceNumberTextId {
+                color: white;
+            }
+            #billTextId {
+                color: white;
+            }
+            dd {
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -15,8 +24,8 @@
             <img src="cid:printassist-logo" width="327" height="43" alt="logo"/>
         </p>
         <h1>Abrechnung</h1>
-        <p>Rechnungsnummer:</p><p>{{invoiceNumber}}</p>
-        <p>Abrechnung für {{firstName}} {{lastName}}</p>
+        <p>Rechnungsnummer:</p><p id="invoiceNumberTextId">{{invoiceNumber}}</p>
+        <p>Abrechnung für </p><p id="billTextId">{{firstName}} {{lastName}}</p>
         <b></b>
         <dl>
             <dt>Email-Adresse:</dt>
