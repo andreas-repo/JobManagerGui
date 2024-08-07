@@ -1,6 +1,5 @@
 package org.printassist.jobmanagergui.services;
 
-import org.printassist.jobmanagergui.JobManagementApplication;
 import org.printassist.jobmanagergui.services.models.Email;
 import org.springframework.core.io.Resource;
 import org.apache.commons.io.IOUtils;
@@ -17,8 +16,10 @@ import java.util.Objects;
 
 @Service
 public class InvoiceServiceImpl {
+
     @Value("classpath:/templates/invoiceTemplate.html")
     private Resource bodyPath;
+
     MailSenderServiceImpl mailSenderService;
 
     @Bean
@@ -43,9 +44,9 @@ public class InvoiceServiceImpl {
         invoice.setTotalCost(String.valueOf(50L * Long.parseLong(duration)));
 
         RestTemplate restTemplate = restTemplate(new RestTemplateBuilder());
-        restTemplate.postForObject("http://localhost:8080/createInvoice", invoice, Invoice.class);
+        Invoice resultingInvoice = restTemplate.postForObject("http://localhost:8080/createInvoice", invoice, Invoice.class);
 
-        return invoice;
+        return resultingInvoice;
     }
 
     public void sendInvoice(Invoice invoice, String receiver) throws IOException {
@@ -58,7 +59,7 @@ public class InvoiceServiceImpl {
     }
 
     private String buildMessageBody(Invoice invoice) throws IOException {
-        return new String((IOUtils.toByteArray(Objects.requireNonNull(JobManagementApplication.class.getClassLoader().getResourceAsStream("templates/invoiceTemplate.html")))), StandardCharsets.UTF_8)
+        return new String((IOUtils.toByteArray(Objects.requireNonNull(this.getClass().getResourceAsStream("/templates/invoiceTemplate.html")))), StandardCharsets.UTF_8)
                 .replace("{{firstName}}", invoice.getFirstNameCustomer())
                 .replace("{{lastName}}", invoice.getLastNameCustomer())
                 .replace("{{emailAddress}}", invoice.getEmailAddressCustomer())
@@ -68,6 +69,7 @@ public class InvoiceServiceImpl {
                 .replace("{{startTime}}", invoice.getStartTimeOfService())
                 .replace("{{endTime}}", invoice.getEndTimeOfService())
                 .replace("{{invoiceDetails}}", invoice.getNotes())
-                .replace("{{total}}", invoice.getTotalCost());
+                .replace("{{total}}", invoice.getTotalCost())
+                .replace("{{invoiceNumber}}", invoice.getInvoiceNumber().getUuid().toString());
     }
 }

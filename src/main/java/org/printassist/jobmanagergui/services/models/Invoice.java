@@ -12,13 +12,13 @@ public class Invoice {
     private String notes;
     private String totalCost;
     private String paymentMethod;
-    private String invoiceNumber;
+    private InvoiceNumber invoiceNumber;
 
-    public String getInvoiceNumber() {
+    public InvoiceNumber getInvoiceNumber()  {
         return invoiceNumber;
     }
 
-    public void setInvoiceNumber(String invoiceNumber) {
+    public void setInvoiceNumber(InvoiceNumber invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
     }
 

@@ -1,9 +1,5 @@
 package org.printassist.jobmanagergui;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.SimpleTimeZone;
-
 import javafx.beans.property.SimpleStringProperty;
 
 public class Job {
