@@ -48,4 +48,5 @@ Label {
 Button {
     -fx-background-color: rgb(189, 155, 63);
     -fx-text-fill: white;
+    -fx-padding: 10, 5, 10, 5;
 }
