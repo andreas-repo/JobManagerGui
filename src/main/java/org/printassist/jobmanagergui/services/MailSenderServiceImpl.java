@@ -17,5 +17,5 @@ public class MailSenderServiceImpl {
         restTemplate.postForObject("http://localhost:8080/sendEmail", email, Email.class);
         return email;
     }
-
 }
+
