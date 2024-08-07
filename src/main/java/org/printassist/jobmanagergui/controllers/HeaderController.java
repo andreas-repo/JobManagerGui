@@ -1,4 +1,4 @@
-package org.printassist.jobmanagergui;
+package org.printassist.jobmanagergui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

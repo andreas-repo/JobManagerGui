@@ -1,4 +1,4 @@
-package org.printassist.jobmanagergui;
+package org.printassist.jobmanagergui.models;
 
 public enum CountryEnum {
 	AT("Österreich"),

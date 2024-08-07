@@ -1,9 +1,10 @@
-package org.printassist.jobmanagergui;
+package org.printassist.jobmanagergui.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.printassist.jobmanagergui.models.Job;
 import org.printassist.jobmanagergui.services.JobServiceImpl;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;

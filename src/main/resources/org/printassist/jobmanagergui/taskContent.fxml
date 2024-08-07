@@ -5,7 +5,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.printassist.jobmanagergui.TaskContentController"
+            fx:controller="org.printassist.jobmanagergui.controllers.TaskContentController"
             prefHeight="400.0" prefWidth="600.0">
     <VBox>
         <HBox>
@@ -75,7 +75,7 @@
             </HBox>
             <HBox alignment="BASELINE_CENTER">
                 <Button id="createInvoiceButton" fx:id="createInvoiceButton" onAction="#createInvoice" text="Create Invoice"/>
-                <Button id="createAndSendInvoiceButton" fx:id="createAndSendInvoiceButton" onAction="#createAndSendInvoiceButton" text="Create and send Invoice"/>
+                <Button id="createAndSendInvoiceButton" fx:id="createAndSendInvoiceButton" onAction="#createInvoiceAndSendAsMail" text="Create and send Invoice"/>
             </HBox>
         </VBox>
     </VBox>

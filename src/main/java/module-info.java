@@ -18,4 +18,8 @@ module org.printassist.jobmanagergui {
 	opens org.printassist.jobmanagergui to javafx.fxml;
 	exports org.printassist.jobmanagergui;
 	exports org.printassist.jobmanagergui.services.models;
+	exports org.printassist.jobmanagergui.controllers;
+	opens org.printassist.jobmanagergui.controllers to javafx.fxml;
+	exports org.printassist.jobmanagergui.models;
+	opens org.printassist.jobmanagergui.models to javafx.fxml;
 }

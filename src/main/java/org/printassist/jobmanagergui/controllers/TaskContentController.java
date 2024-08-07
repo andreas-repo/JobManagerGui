@@ -1,10 +1,13 @@
-package org.printassist.jobmanagergui;
+package org.printassist.jobmanagergui.controllers;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import javafx.scene.control.*;
+
+import org.printassist.jobmanagergui.models.CountryEnum;
+import org.printassist.jobmanagergui.models.Job;
 import org.printassist.jobmanagergui.services.InvoiceServiceImpl;
 import org.printassist.jobmanagergui.services.JobServiceImpl;
 import org.printassist.jobmanagergui.services.models.Invoice;
@@ -181,7 +184,7 @@ public class TaskContentController {
 	public void createInvoice() {
 		String date = taskDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-		Invoice invoice = invoiceService.buildInvoice(taskFirstNameTextField.getText(),
+		invoiceService.buildInvoice(taskFirstNameTextField.getText(),
 				taskLastNameTextField.getText(),
 				taskEmailAddressTextField.getText(),
 				taskPhoneNumberTextField.getText(),
@@ -194,7 +197,7 @@ public class TaskContentController {
 				);
 	}
 
-	public void createAndSendInvoiceButton() {
+	public void createInvoiceAndSendAsMail() {
 		if (taskInvoiceReceiverTextField.getText().isEmpty()) {
 			taskInvoiceReceiverTextField.setPromptText("Receiver missing!");
 		} else {

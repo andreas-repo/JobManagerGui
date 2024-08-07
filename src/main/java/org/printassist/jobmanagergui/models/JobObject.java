@@ -1,4 +1,4 @@
-package org.printassist.jobmanagergui;
+package org.printassist.jobmanagergui.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

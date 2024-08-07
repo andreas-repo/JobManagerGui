@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.printassist.jobmanagergui.LandingPageController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.printassist.jobmanagergui.controllers.LandingPageController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
