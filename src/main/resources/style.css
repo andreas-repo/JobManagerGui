@@ -50,3 +50,27 @@ Button {
     -fx-text-fill: white;
     -fx-padding: 5, 10, 5, 10;
 }
+
+#textId {
+    -fx-text-fill: white;
+}
+
+Pane {
+    -fx-text-fill: white;
+}
+
+#createInvoiceButton {
+    -fx-padding: 10, 10, 10, 10;
+}
+
+#createAndSendInvoiceButton {
+    -fx-padding: 10, 10, 10, 10;
+}
+
+#separatorHBoxId {
+    -fx-padding: 10, 10, 10, 10;
+}
+
+#separatorHBoxTwoId {
+    -fx-padding: 10, 10, 10, 10;
+}

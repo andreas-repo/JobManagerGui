@@ -17,4 +17,8 @@ public class LandingPageController {
 	public Tab finishTaskTab;
 	@FXML
 	public AnchorPane taskTabInclude;
+	@FXML
+	public Tab calendarTab;
+	@FXML
+	public AnchorPane calendarInclude;
 }

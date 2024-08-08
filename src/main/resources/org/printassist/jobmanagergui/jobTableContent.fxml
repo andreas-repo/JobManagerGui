@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+
 <StackPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.printassist.jobmanagergui.controllers.JobTableContentController"
@@ -26,7 +27,7 @@
 
         <VBox id="jobTableControlsVBox" fx:id="jobTableControlsVBox" alignment="CENTER">
             <Label id="addJobLabel" fx:id="addJobLabel" text="Add new Job"/>
-            <HBox id="addJobHBox"   fx:id="addJobHBox">
+            <HBox id="addJobHBox"   fx:id="addJobHBox" alignment="BASELINE_CENTER">
                 <Label id="firstNameLabel" fx:id="firstNameLabel" text="First Name:"/>
                 <TextField id="firstNameTextField" fx:id="firstNameTextField" promptText="Enter first name"/>
                 <Label id="lastNameLabel" fx:id="lastNameLabel" text="Last Name:"/>
@@ -39,9 +40,11 @@
                 <TextField id="printerTypeTextField" fx:id="printerTypeTextField" promptText="Enter email address"/>
             </HBox>
             <Button id="addJobButton" fx:id="addJobButton" text="Add Job" onAction="#onAddJobButtonClick"/>
-            <HBox id="deleteJobHBox" fx:id="deleteJobHBox">
+            <HBox id="deleteJobHBox" fx:id="deleteJobHBox" alignment="BASELINE_CENTER">
                 <Label id="deleteJobLabel" fx:id="deleteJobLabel" text="Delete Job:"/>
                 <TextField id="deleteJobTextField" fx:id="deleteJobTextField" promptText="Enter email connected to job"/>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Button id="deleteJobButton" fx:id="deleteJobButton" text="Delete Job" onAction="#onDeleteJobButtonClick"/>
             </HBox>
         </VBox>

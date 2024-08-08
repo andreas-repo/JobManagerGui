@@ -6,9 +6,10 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.printassist.jobmanagergui.controllers.TaskContentController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0"
+            prefWidth="600.0">
     <VBox>
-        <HBox>
+        <HBox alignment="BASELINE_CENTER">
             <Label id="taskFindByEmailAddressLabel" fx:id="taskFindByEmailAddressLabel" text="Task:"/>
             <TextField id="taskFindByEmailAddressTextField" fx:id="taskFindByEmailAddressTextField" promptText="Enter email address of task..."/>
             <Button id="getTaskButton" fx:id="getTaskButton" text="Get Task" onAction="#onFindByEmailAddressButtonClick"/>
@@ -16,23 +17,21 @@
             <TextField id="taskFindByPhonenumberTextField" fx:id="taskFindByPhonenumberTextField" promptText="Enter phonenumber of task..."/>
             <Button id="taskFindByPhonenumberButton" fx:id="taskFindByPhonenumberButton" text="Find Task by Phonenumber" onAction="#onTaskFindByPhonenumberButtonClick"/>
         </HBox>
-        <HBox>
+        <HBox id="separatorHBoxId">
             <Separator prefWidth="1600"/>
         </HBox>
         <VBox id="taskVBox" fx:id="taskVBox" visible="false">
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Label id="taskFirstNameLabel" fx:id="taskFirstNameLabel" text="First Name:"/>
                 <TextField id="taskFirstNameTextField" fx:id="taskFirstNameTextField"/>
                 <Label id="taskLastNameLabel" fx:id="taskLastNameLabel" text="Last Name:"/>
                 <TextField id="taskLastNameTextField" fx:id="taskLastNameTextField"/>
-            </HBox>
-            <HBox>
                 <Label id="taskEmailAddressLabel" fx:id="taskEmailAddressLabel" text="Email Address:"/>
                 <TextField id="taskEmailAddressTextField" fx:id="taskEmailAddressTextField"/>
                 <Label id="taskPhoneNumberLabel" fx:id="taskPhoneNumberLabel" text="Phone number:"/>
                 <TextField id="taskPhoneNumberTextField" fx:id="taskPhoneNumberTextField"/>
             </HBox>
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Label id="taskAddressLabel" fx:id="taskAddressLabel" text="Address:"/>
                 <TextField id="taskAddressTextField" fx:id="taskAddressTextField"/>
                 <Label id="taskCityLabel" fx:id="taskCityLabel" text="City:"/>
@@ -44,7 +43,7 @@
                 <Label id="taskCountryLabel" fx:id="taskCountryLabel" text="Country:"/>
                 <TextField id="taskCountryTextField" fx:id="taskCountryTextField"/>
             </HBox>
-            <HBox>
+            <HBox alignment="BASELINE_CENTER">
                 <Label id="taskPrinterTypeLabel" fx:id="taskPrinterTypeLabel" text="Printer type:"/>
                 <TextField id="taskPrinterTypeTextField" fx:id="taskPrinterTypeTextField"/>
                 <Label id="taskDateLabel" fx:id="taskDateLabel" text="Date:"/>
@@ -52,8 +51,8 @@
                 <Label id="taskTimeLabel" fx:id="taskTimeLabel" text="Time:"/>
                 <TextField id="taskTimeTextField" fx:id="taskTimeTextField"/>
             </HBox>
-            <HBox>
-                <Separator prefWidth="1200"/>
+            <HBox id="separatorHBoxTwoId">
+                <Separator prefWidth="1600"/>
             </HBox>
             <HBox alignment="BASELINE_CENTER">
                 <Label id="taskDatePickerLabel" fx:id="taskDatePickerLabel" text="Select Date for completion of Task:"/>

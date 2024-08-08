@@ -3,10 +3,12 @@ package org.printassist.jobmanagergui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class JobManagementApplication extends Application {
@@ -18,6 +20,7 @@ public class JobManagementApplication extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(JobManagementApplication.class.getResource("landing-page-view.fxml"), resourceBundle);
 		Scene scene = new Scene(fxmlLoader.load(), 1600, 1000);
 		scene.getStylesheets().add("style.css");
+		stage.getIcons().add(new Image(Objects.requireNonNull(JobManagementApplication.class.getResourceAsStream("/images/PRINTASSIST_changed.png"))));
 		stage.setTitle("Welcome to the JobManagement Application!");
 		stage.setScene(scene);
 		stage.show();

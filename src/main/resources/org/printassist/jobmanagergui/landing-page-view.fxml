@@ -16,5 +16,8 @@
         <Tab id="finishTaskTab" fx:id="finishTaskTab" text="Task" closable="false">
             <fx:include source="taskContent.fxml" fx:id="taskTabInclude"/>
         </Tab>
+        <Tab id="calendarTab" fx:id="calendarTab" text="Calendar" closable="false">
+            <fx:include source="calendarContent.fxml" fx:id="calendarInclude"/>
+        </Tab>
     </TabPane>
 </AnchorPane>

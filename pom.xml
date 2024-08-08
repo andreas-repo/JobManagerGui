@@ -58,6 +58,22 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-fxml</artifactId>
+            <version>17-r1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-common</artifactId>
+            <version>17-r1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-test-support</artifactId>
+            <version>17-r1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
