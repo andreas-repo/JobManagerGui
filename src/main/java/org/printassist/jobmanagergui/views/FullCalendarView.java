@@ -6,6 +6,7 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -49,7 +50,6 @@ public class FullCalendarView {
 			AnchorPane ap = new AnchorPane();
 			ap.setPrefSize(200, 10);
 			ap.setBottomAnchor(txt, 5.0);
-			txt.setId("textId");
 			ap.getChildren().add(txt);
 			dayLabels.add(ap, col++, 0);
 		}
@@ -80,14 +80,14 @@ public class FullCalendarView {
 		}
 		// Populate the calendar with day numbers
 		for (AnchorPaneNode ap : allCalendarDays) {
-			if (ap.getChildren().size() != 0) {
+			if (!ap.getChildren().isEmpty()) {
 				ap.getChildren().remove(0);
 			}
 			Text txt = new Text(String.valueOf(calendarDate.getDayOfMonth()));
 			ap.setDate(calendarDate);
 			ap.setTopAnchor(txt, 5.0);
 			ap.setLeftAnchor(txt, 5.0);
-			ap.getChildren().add(txt);
+			ap.addChild(txt);
 			calendarDate = calendarDate.plusDays(1);
 		}
 		// Change the title of the calendar

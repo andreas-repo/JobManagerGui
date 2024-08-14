@@ -14,6 +14,8 @@ module org.printassist.jobmanagergui {
     requires org.apache.commons.io;
     requires spring.core;
 	requires jdk.jdi;
+	requires org.slf4j;
+	requires org.apache.logging.log4j;
 
 	opens org.printassist.jobmanagergui to javafx.fxml;
 	exports org.printassist.jobmanagergui;
@@ -22,4 +24,5 @@ module org.printassist.jobmanagergui {
 	opens org.printassist.jobmanagergui.controllers to javafx.fxml;
 	exports org.printassist.jobmanagergui.models;
 	opens org.printassist.jobmanagergui.models to javafx.fxml;
+	exports org.printassist.jobmanagergui.views;
 }

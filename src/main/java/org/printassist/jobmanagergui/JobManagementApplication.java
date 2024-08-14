@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class JobManagementApplication extends Application {
 	public void start(Stage stage) throws IOException {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application_de", Locale.GERMAN);
 		FXMLLoader fxmlLoader = new FXMLLoader(JobManagementApplication.class.getResource("landing-page-view.fxml"), resourceBundle);
-		Scene scene = new Scene(fxmlLoader.load(), Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
+		Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 		scene.getStylesheets().add("style.css");
 		stage.getIcons().add(new Image(Objects.requireNonNull(JobManagementApplication.class.getResourceAsStream("/images/PRINTASSIST_changed.png"))));
 		stage.setTitle("Welcome to the JobManagement Application!");
