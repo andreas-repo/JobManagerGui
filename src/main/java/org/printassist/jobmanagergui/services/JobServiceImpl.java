@@ -33,7 +33,7 @@ public class JobServiceImpl {
 
 	public void deleteJobThroughEmailAddress(String emailAddress, RestTemplate restTemplate) {
 		if (emailAddress != null && !emailAddress.isEmpty()) {
-			restTemplate.delete("http://localhost:8080//deleteJobThroughEmailAddress/" + emailAddress);
+			restTemplate.delete("http://localhost:8080/deleteJobThroughEmailAddress/" + emailAddress);
 		}
 	}
 
