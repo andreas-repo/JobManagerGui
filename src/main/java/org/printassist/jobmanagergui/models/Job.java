@@ -1,111 +1,112 @@
 package org.printassist.jobmanagergui.models;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Job {
 
-	public SimpleStringProperty firstName = new SimpleStringProperty();
-	public  SimpleStringProperty lastName = new SimpleStringProperty();
-	public  SimpleStringProperty emailAddress = new SimpleStringProperty();
-	public  SimpleStringProperty printerType = new SimpleStringProperty();
-	public  SimpleStringProperty phoneNumber = new SimpleStringProperty();
-	public SimpleStringProperty address = new SimpleStringProperty();
-	public SimpleStringProperty city = new SimpleStringProperty();
-	public SimpleStringProperty province = new SimpleStringProperty();
-	public SimpleStringProperty postalCode = new SimpleStringProperty();
-	public SimpleStringProperty country = new SimpleStringProperty();
-	public SimpleStringProperty date = new SimpleStringProperty();
-	public SimpleStringProperty time = new SimpleStringProperty();
+	public StringProperty firstName = new SimpleStringProperty("");
+	public StringProperty lastName = new SimpleStringProperty("");
+	public StringProperty emailAddress = new SimpleStringProperty("");
+	public StringProperty printerType = new SimpleStringProperty("");
+	public StringProperty phoneNumber = new SimpleStringProperty("");
+	public StringProperty address = new SimpleStringProperty("");
+	public StringProperty city = new SimpleStringProperty("");
+	public StringProperty province = new SimpleStringProperty("");
+	public StringProperty postalCode = new SimpleStringProperty("");
+	public StringProperty country = new SimpleStringProperty("");
+	public StringProperty date = new SimpleStringProperty("");
+	public StringProperty time = new SimpleStringProperty("");
 
-	public String getFirstName() {
+	public final String getFirstName() {
 		return firstName.get();
 	}
 
-	public SimpleStringProperty firstNameProperty() {
+	public final StringProperty firstNameProperty() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public final void setFirstName(String firstName) {
 		this.firstName.set(firstName);
 	}
 
-	public String getLastName() {
+	public final String getLastName() {
 		return lastName.get();
 	}
 
-	public SimpleStringProperty lastNameProperty() {
+	public final StringProperty lastNameProperty() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public final void setLastName(String lastName) {
 		this.lastName.set(lastName);
 	}
 
-	public String getEmailAddress() {
+	public final String getEmailAddress() {
 		return emailAddress.get();
 	}
 
-	public SimpleStringProperty emailAddressProperty() {
+	public final StringProperty emailAddressProperty() {
 		return emailAddress;
 	}
 
-	public void setEmailAddress(String emailAddress) {
+	public final void setEmailAddress(String emailAddress) {
 		this.emailAddress.set(emailAddress);
 	}
 
-	public String getPrinterType() {
+	public final String getPrinterType() {
 		return printerType.get();
 	}
 
-	public SimpleStringProperty printerTypeProperty() {
+	public final StringProperty printerTypeProperty() {
 		return printerType;
 	}
 
-	public void setPrinterType(String printerType) {
+	public final void setPrinterType(String printerType) {
 		this.printerType.set(printerType);
 	}
 
-	public String getPhoneNumber() {
+	public final String getPhoneNumber() {
 		return phoneNumber.get();
 	}
 
-	public SimpleStringProperty phoneNumberProperty() {
+	public final StringProperty phoneNumberProperty() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public final void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber.set(phoneNumber);
 	}
 
-	public String getAddress() {
+	public final String getAddress() {
 		return address.get();
 	}
 
-	public SimpleStringProperty addressProperty() {
+	public final StringProperty addressProperty() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public final void setAddress(String address) {
 		this.address.set(address);
 	}
 
-	public String getCity() {
+	public final String getCity() {
 		return city.get();
 	}
 
-	public SimpleStringProperty cityProperty() {
+	public final StringProperty cityProperty() {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public final void setCity(String city) {
 		this.city.set(city);
 	}
 
-	public String getProvince() {
+	public final String getProvince() {
 		return province.get();
 	}
 
-	public SimpleStringProperty provinceProperty() {
+	public final StringProperty provinceProperty() {
 		return province;
 	}
 
@@ -113,51 +114,51 @@ public class Job {
 		this.province.set(province);
 	}
 
-	public String getPostalCode() {
+	public final String getPostalCode() {
 		return postalCode.get();
 	}
 
-	public SimpleStringProperty postalCodeProperty() {
+	public final StringProperty postalCodeProperty() {
 		return postalCode;
 	}
 
-	public void setPostalCode(String postalCode) {
+	public final void setPostalCode(String postalCode) {
 		this.postalCode.set(postalCode);
 	}
 
-	public String getCountry() {
+	public final String getCountry() {
 		return country.get();
 	}
 
-	public SimpleStringProperty countryProperty() {
+	public final StringProperty countryProperty() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public final void setCountry(String country) {
 		this.country.set(country);
 	}
 
-	public String getDate() {
+	public final String getDate() {
 		return date.get();
 	}
 
-	public SimpleStringProperty dateProperty() {
+	public final StringProperty dateProperty() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public final void setDate(String date) {
 		this.date.set(date);
 	}
 
-	public String getTime() {
+	public final String getTime() {
 		return time.get();
 	}
 
-	public SimpleStringProperty timeProperty() {
+	public final StringProperty timeProperty() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public final void setTime(String time) {
 		this.time.set(time);
 	}
 }

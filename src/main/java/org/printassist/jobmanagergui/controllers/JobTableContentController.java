@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javafx.scene.control.*;
 import org.printassist.jobmanagergui.models.Job;
 import org.printassist.jobmanagergui.services.JobServiceImpl;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -12,11 +13,6 @@ import org.springframework.web.client.RestTemplate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -87,7 +83,7 @@ public class JobTableContentController {
 		printerTypeColumn.setCellValueFactory(new PropertyValueFactory<>("printerType"));
 		phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 		data.addAll(fillWithDatabaseData());
-		jobTableContentTableView.setItems(data);
+		jobTableContentTableView.getItems().setAll(data);
 		sizeTableColumnsToFillTable();
 	}
 

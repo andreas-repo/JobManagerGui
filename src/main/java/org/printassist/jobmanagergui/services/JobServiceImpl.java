@@ -19,12 +19,12 @@ public class JobServiceImpl {
 
 	public List<Job> getAllJobs(RestTemplate restTemplate) {
 		@SuppressWarnings("unchecked") //save because backend endpoint returns a List<Job> object
-		List<Job> result = restTemplate.getForObject("http://localhost:8080/getAllJobs", List.class);
+		List<LinkedHashMap> result = restTemplate.getForObject("http://localhost:8080/getAllJobs", List.class);
         assert result != null;
         if (result.isEmpty()) {
 			return new ArrayList<>();
 		}
-		return result;
+		return convertLinkedHashMapToJob(result);
 	}
 
 	public void createJob(Job job, RestTemplate restTemplate) {
