@@ -5,18 +5,18 @@ import javafx.beans.property.StringProperty;
 
 public class Job {
 
-	public StringProperty firstName = new SimpleStringProperty("");
-	public StringProperty lastName = new SimpleStringProperty("");
-	public StringProperty emailAddress = new SimpleStringProperty("");
-	public StringProperty printerType = new SimpleStringProperty("");
-	public StringProperty phoneNumber = new SimpleStringProperty("");
-	public StringProperty address = new SimpleStringProperty("");
-	public StringProperty city = new SimpleStringProperty("");
-	public StringProperty province = new SimpleStringProperty("");
-	public StringProperty postalCode = new SimpleStringProperty("");
-	public StringProperty country = new SimpleStringProperty("");
-	public StringProperty date = new SimpleStringProperty("");
-	public StringProperty time = new SimpleStringProperty("");
+	public StringProperty firstName = new SimpleStringProperty();
+	public StringProperty lastName = new SimpleStringProperty();
+	public StringProperty emailAddress = new SimpleStringProperty();
+	public StringProperty printerType = new SimpleStringProperty();
+	public StringProperty phoneNumber = new SimpleStringProperty();
+	public StringProperty address = new SimpleStringProperty();
+	public StringProperty city = new SimpleStringProperty();
+	public StringProperty province = new SimpleStringProperty();
+	public StringProperty postalCode = new SimpleStringProperty();
+	public StringProperty country = new SimpleStringProperty();
+	public StringProperty date = new SimpleStringProperty();
+	public StringProperty time = new SimpleStringProperty();
 
 	public final String getFirstName() {
 		return firstName.get();
