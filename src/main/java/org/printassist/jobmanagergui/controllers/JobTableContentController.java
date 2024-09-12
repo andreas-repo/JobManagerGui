@@ -1,10 +1,12 @@
 package org.printassist.jobmanagergui.controllers;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import org.printassist.jobmanagergui.models.Job;
 import org.printassist.jobmanagergui.services.JobServiceImpl;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -14,10 +16,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 public class JobTableContentController {
 	@FXML
@@ -71,6 +69,40 @@ public class JobTableContentController {
 	@FXML
 	public StackPane jobTableContentStackPane;
 	@FXML
+	public Label addressLabel;
+	@FXML
+	public TextField addressTextField;
+	@FXML
+	public Label cityLabel;
+	@FXML
+	public TextField cityTextField;
+	@FXML
+	public Label countryLabel;
+	@FXML
+	public TextField countryTextField;
+	@FXML
+	public Label postalCodeLabel;
+	@FXML
+	public TextField postalCodeTextField;
+	@FXML
+	public Label provinceLabel;
+	@FXML
+	public TextField provinceTextField;
+	@FXML
+	public Label timeLabel;
+	@FXML
+	public TextField timeTextField;
+	@FXML
+	public Label dateLabel;
+	@FXML
+	public DatePicker datePicker;
+	@FXML
+	public Label completedLabel;
+	@FXML
+	public TextField completedTextField;
+	@FXML
+	public GridPane addJobGridPane;
+	@FXML
 	private VBox jobTableContentVBox;
 
 	JobServiceImpl jobService = new JobServiceImpl();
@@ -109,11 +141,22 @@ public class JobTableContentController {
 		Optional<Job> result = jobService.findJobByEmailAddress(emailAddressTextField.getText(), jobService.restTemplate(new RestTemplateBuilder()));
 		if (result.isEmpty()) {
 			Job newJob = new Job();
-			newJob.setFirstName(firstNameTextField.getText());
-			newJob.setLastName(lastNameTextField.getText());
-			newJob.setEmailAddress(emailAddressTextField.getText());
-			newJob.setPrinterType(printerTypeTextField.getText());
-			newJob.setPhoneNumber(phoneNumberTextField.getText());
+			newJob.setFirstName(firstNameTextField.getText().isEmpty() ? "" : firstNameTextField.getText());
+			newJob.setLastName(lastNameTextField.getText().isEmpty() ? "" : lastNameTextField.getText());
+			newJob.setEmailAddress(emailAddressTextField.getText().isEmpty() ? "" : emailAddressTextField.getText());
+			newJob.setPrinterType(printerTypeTextField.getText().isEmpty() ? "" : printerTypeTextField.getText());
+			newJob.setPhoneNumber(phoneNumberTextField.getText().isEmpty() ? "" : phoneNumberTextField.getText());
+			newJob.setAddress(addressTextField.getText().isEmpty() ? "" : addressTextField.getText());
+			newJob.setCity(cityTextField.getText().isEmpty() ? "" : cityTextField.getText());
+			newJob.setCountry(countryTextField.getText().isEmpty() ? "" : countryTextField.getText());
+			newJob.setPostalCode(postalCodeTextField.getText().isEmpty() ? "" : postalCodeTextField.getText());
+			newJob.setProvince(provinceTextField.getText().isEmpty() ? "" : provinceTextField.getText());
+			newJob.setTime(timeTextField.getText().isEmpty() ? "" : timeTextField.getText());
+			try {
+				newJob.setDate(datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			} catch (NullPointerException e) {
+				newJob.setDate("");
+			}
 			RestTemplate restTemplate = jobService.restTemplate(new RestTemplateBuilder());
 			jobService.createJob(newJob, restTemplate);
 		}

@@ -18,7 +18,7 @@ public class JobServiceImpl {
 	}
 
 	public List<Job> getAllJobs(RestTemplate restTemplate) {
-		@SuppressWarnings("unchecked") //save because backend endpoint returns a List<Job> object
+		@SuppressWarnings("unchecked") //save with LinkedHashMap
 		List<LinkedHashMap> result = restTemplate.getForObject("http://localhost:8080/getAllJobs", List.class);
         assert result != null;
         if (result.isEmpty()) {

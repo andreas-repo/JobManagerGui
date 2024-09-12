@@ -28,16 +28,33 @@
         <VBox id="jobTableControlsVBox" fx:id="jobTableControlsVBox" alignment="CENTER">
             <Label id="addJobLabel" fx:id="addJobLabel" text="Add new Job"/>
             <HBox id="addJobHBox"   fx:id="addJobHBox" alignment="BASELINE_CENTER">
-                <Label id="firstNameLabel" fx:id="firstNameLabel" text="First Name:"/>
-                <TextField id="firstNameTextField" fx:id="firstNameTextField" promptText="Enter first name"/>
-                <Label id="lastNameLabel" fx:id="lastNameLabel" text="Last Name:"/>
-                <TextField id="lastNameTextField" fx:id="lastNameTextField" promptText="Enter last name"/>
-                <Label id="emailAddressLabel" fx:id="emailAddressLabel" text="Email Address:"/>
-                <TextField id="emailAddressTextField" fx:id="emailAddressTextField" promptText="Enter email address"/>
-                <Label id="phoneNumberLabel" fx:id="phoneNumberLabel" text="Phone number:"/>
-                <TextField id="phoneNumberTextField" fx:id="phoneNumberTextField" promptText="Enter email address"/>
-                <Label id="printerTypeLabel" fx:id="printerTypeLabel" text="Printer type:"/>
-                <TextField id="printerTypeTextField" fx:id="printerTypeTextField" promptText="Enter email address"/>
+                <GridPane id="addJobGridPane" fx:id="addJobGridPane">
+                    <Label id="firstNameLabel" fx:id="firstNameLabel" text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField id="firstNameTextField" fx:id="firstNameTextField" promptText="Enter first name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label id="lastNameLabel" fx:id="lastNameLabel" text="Last Name:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <TextField id="lastNameTextField" fx:id="lastNameTextField" promptText="Enter last name" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                    <Label id="emailAddressLabel" fx:id="emailAddressLabel" text="Email Address:" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+                    <TextField id="emailAddressTextField" fx:id="emailAddressTextField" promptText="Enter email address" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+                    <Label id="phoneNumberLabel" fx:id="phoneNumberLabel" text="Phone number:" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+                    <TextField id="phoneNumberTextField" fx:id="phoneNumberTextField" promptText="Enter phoneNumber" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+                    <Label id="printerTypeLabel" fx:id="printerTypeLabel" text="Printer type:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField id="printerTypeTextField" fx:id="printerTypeTextField" promptText="Enter printer type" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label id="addressLabel" fx:id="addressLabel" text="Address:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <TextField id="addressTextField" fx:id="addressTextField" promptText="Enter address" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                    <Label id="cityLabel" fx:id="cityLabel" text="City:" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                    <TextField id="cityTextField" fx:id="cityTextField" promptText="Enter city" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+                    <Label id="countryLabel" fx:id="countryLabel" text="Country:" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+                    <TextField id="countryTextField" fx:id="countryTextField" promptText="Enter country" GridPane.columnIndex="7" GridPane.rowIndex="1"/>
+                    <Label id="postalCodeLabel" fx:id="postalCodeLabel" text="Postal code:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField id="postalCodeTextField" fx:id="postalCodeTextField" promptText="Enter postal code" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label id="provinceLabel" fx:id="provinceLabel" text="Province:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <TextField id="provinceTextField" fx:id="provinceTextField" promptText="Enter province" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                    <Label id="timeLabel" fx:id="timeLabel" text="Time:" GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+                    <TextField id="timeTextField" fx:id="timeTextField" promptText="Enter time" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+                    <Label id="dateLabel" fx:id="dateLabel" text="Date:" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+                    <DatePicker id="dateTextField" fx:id="datePicker" promptText="Enter date" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+
+                </GridPane>
             </HBox>
             <Button id="addJobButton" fx:id="addJobButton" text="Add Job" onAction="#onAddJobButtonClick"/>
             <HBox id="deleteJobHBox" fx:id="deleteJobHBox" alignment="BASELINE_CENTER">
